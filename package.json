@@ -1,0 +1,17 @@
+{
+	"name": "antemplate",
+	"version": "1.0.0",
+	"description": "Antlysis AntDesign Template",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"Antlysis",
+		"AntDesign",
+		"Create React App",
+		"Template"
+	],
+	"author": "LiChuan",
+	"license": "ISC"
+}
