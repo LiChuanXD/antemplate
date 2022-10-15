@@ -56,11 +56,11 @@ const RegisterForm = ({ propValues }) => {
 					}
 				]}
 			>
-				<Input type="text" name="name" id="name" required />
+				<Input type="text" name="name" id="name" className="register-form-input" required />
 			</Form.Item>
 
 			<Form.Item label="Email" name="email" htmlFor="email" rules={[{ validator }]}>
-				<Input type="email" id="email" name="email" />
+				<Input type="email" id="email" name="email" className="register-form-input" />
 			</Form.Item>
 
 			<Form.Item
@@ -75,11 +75,11 @@ const RegisterForm = ({ propValues }) => {
 					}
 				]}
 			>
-				<Input type="text" id="number" name="number" required />
+				<Input type="text" id="number" name="number" className="register-form-input" required />
 			</Form.Item>
 
 			<Form.Item>
-				<Button htmlType="submit" block loading={loading}>
+				<Button htmlType="submit" block loading={loading} id="register-form-submit-btn">
 					Submit
 				</Button>
 			</Form.Item>
