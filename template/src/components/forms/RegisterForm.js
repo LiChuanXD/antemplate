@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { Form, Input, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { showError } from "../../redux/slices/errorSlice";
-import checkInputFormat from "../../utils/misc/verification";
+import checkInputFormat from "../../utils/misc/validation";
 import authApi from "../../services/user/auth";
 
 const RegisterForm = ({ propValues }) => {
