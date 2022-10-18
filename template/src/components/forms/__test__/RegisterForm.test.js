@@ -13,13 +13,21 @@ import MockComponent from "../../tests/Mock";
     4.) If phone number format does not meet criteria will have error message (alphabets, spaces, symbols, length, starts with 01)
     5.) If email address format does not meet criteria will have error message (.@something.com)
     6.) If name format does not meet criteria will have error message (number, symbols)
-    7.) Can submit form when everything is correct
-    8.) After form submit success should 
-    9.) After form submit failed should popup error message
+	7.) Can pass in optional props of "propValues"
+    8.) Can submit form when everything is correct
+    9.) After form submit success should 
+    10.) After form submit failed should popup error message
 */
 
 describe("Form Input Validations", () => {
 	describe("Phone Number Input Validations", () => {
+		it("should be able to type", async () => {
+			render(<MockComponent children={<RegisterForm />} />);
+			const phoneInput = screen.getByRole("textbox", { name: /number/i });
+			await userEvent.type(phoneInput, "0123456789");
+			expect(phoneInput.value).toBe("0123456789");
+		});
+
 		it("should be required input field", async () => {
 			render(<MockComponent children={<RegisterForm />} />);
 			const phoneInput = screen.getByRole("textbox", { name: /number/i });
@@ -39,6 +47,13 @@ describe("Form Input Validations", () => {
 	});
 
 	describe("Email Address Input Validations", () => {
+		it("should be able to type", async () => {
+			render(<MockComponent children={<RegisterForm />} />);
+			const emailInput = screen.getByRole("textbox", { name: /email/i });
+			await userEvent.type(emailInput, "test@email.com");
+			expect(emailInput.value).toBe("test@email.com");
+		});
+
 		it("should be optional input field", async () => {
 			render(<MockComponent children={<RegisterForm />} />);
 			const emailInput = screen.getByRole("textbox", { name: /email/i });
@@ -58,6 +73,13 @@ describe("Form Input Validations", () => {
 	});
 
 	describe("User Name Input Validations", () => {
+		it("should be able to type", async () => {
+			render(<MockComponent children={<RegisterForm />} />);
+			const nameInput = screen.getByRole("textbox", { name: /name/i });
+			await userEvent.type(nameInput, "abcde");
+			expect(nameInput.value).toBe("abcde");
+		});
+
 		it("should be required input field", async () => {
 			render(<MockComponent children={<RegisterForm />} />);
 			const nameInput = screen.getByRole("textbox", { name: /name/i });
@@ -76,7 +98,3 @@ describe("Form Input Validations", () => {
 		});
 	});
 });
-
-// describe("Form Submissions", () => {
-// 	test("if ", async () => {});
-// });
