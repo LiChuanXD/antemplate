@@ -43,6 +43,7 @@ const RegisterForm = ({ propValues }) => {
 			onFinishFailed={e => console.log("submit fail", e.errorFields)}
 			disabled={loading}
 			initialValues={propValues}
+			aria-label="form"
 		>
 			<Form.Item
 				label="Name"
