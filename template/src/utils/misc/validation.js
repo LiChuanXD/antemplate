@@ -26,7 +26,7 @@ const checkInputFormat = data => {
 		}
 	}
 	if (email) {
-		const emailRegex = /.@[a-z]+\.[a-z]{2,}$/;
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(email)) {
 			field = "email";
 			message = "You have entered an invalid email address";
