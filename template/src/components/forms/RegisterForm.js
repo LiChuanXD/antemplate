@@ -54,16 +54,16 @@ const RegisterForm = ({ formConfig }) => {
 	// form configs
 	const initialValues = useMemo(() => {
 		let returnThis = {};
-		if (formConfig.name && formConfig.name.defaultValue) returnThis.name = formConfig.name.defaultValue;
-		if (formConfig.email && formConfig.email.defaultValue) returnThis.email = formConfig.email.defaultValue;
-		if (formConfig.number && formConfig.number.defaultValue) returnThis.number = formConfig.number.defaultValue;
+		if (formConfig && formConfig.name && formConfig.name.defaultValue) returnThis.name = formConfig.name.defaultValue;
+		if (formConfig && formConfig.email && formConfig.email.defaultValue) returnThis.email = formConfig.email.defaultValue;
+		if (formConfig && formConfig.number && formConfig.number.defaultValue) returnThis.number = formConfig.number.defaultValue;
 		return returnThis;
 	}, [formConfig]);
 
 	const formContent = useMemo(() => {
 		let holder = [];
 
-		if (formConfig.name && formConfig.name.showInput) {
+		if (formConfig && formConfig.name && formConfig.name.showInput) {
 			let nameRules = [{ validator }];
 
 			if (formConfig.name.required)
@@ -90,7 +90,7 @@ const RegisterForm = ({ formConfig }) => {
 			holder.push({ elem: nameElement, sequence });
 		}
 
-		if (formConfig.email && formConfig.email.showInput) {
+		if (formConfig && formConfig.email && formConfig.email.showInput) {
 			let emailRules = [{ validator }];
 
 			if (formConfig.email.required)
@@ -117,7 +117,7 @@ const RegisterForm = ({ formConfig }) => {
 			holder.push({ elem: emailElement, sequence });
 		}
 
-		if (formConfig.number && formConfig.number.showInput) {
+		if (formConfig && formConfig.number && formConfig.number.showInput) {
 			let numberRules = [{ validator }];
 
 			if (formConfig.number.required)

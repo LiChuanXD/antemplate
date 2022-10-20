@@ -16,7 +16,7 @@
 			"react-router-dom": "^6.4.2"
 		},
 		"scripts": {
-			"test": "jest"
+			"test": "jest --watch"
 		}
 	}
 }
