@@ -100,3 +100,98 @@ describe("Name Input Field", () => {
 		expect(errorMessage).toBeInTheDocument();
 	});
 });
+
+describe("Email Address Input Field", () => {
+	it("Should render input field if show input is true", async () => {
+		const formConfig = {
+			email: {
+				showInput: true
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const emailInputElement = screen.getByTestId("email-input");
+		expect(emailInputElement).toBeInTheDocument();
+	});
+
+	it("Should show the correct label if string is passed as props", async () => {
+		const formConfig = {
+			email: {
+				showInput: true,
+				label: "Email Address"
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const labelText = screen.getByText(formConfig.email.label);
+		expect(labelText).toBeInTheDocument();
+		expect(labelText.innerHTML).toBe(formConfig.email.label);
+	});
+
+	it("Should be required if required is true", async () => {
+		const formConfig = {
+			email: {
+				showInput: true,
+				label: "Email Address",
+				required: true
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const emailInputField = screen.getByRole("textbox", { name: formConfig.email.label });
+		expect(emailInputField).toBeRequired();
+	});
+
+	it("Should have correct placeholder if string is passed as props", async () => {
+		const formConfig = {
+			email: {
+				showInput: true,
+				label: "Email Address",
+				placeholder: "Your Email Address"
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const emailInputField = screen.getByPlaceholderText(formConfig.email.placeholder);
+		expect(emailInputField).toBeInTheDocument();
+		expect(emailInputField.placeholder).toBe(formConfig.email.placeholder);
+	});
+
+	it("Should be disabled if true is being passed as props", async () => {
+		const formConfig = {
+			email: {
+				showInput: true,
+				label: "Email Address",
+				disabled: true
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const emailInputField = screen.getByRole("textbox", { name: formConfig.email.label });
+		expect(emailInputField).toBeDisabled();
+	});
+
+	it("Should have the correct default/initial value if its being passed as props", async () => {
+		const formConfig = {
+			email: {
+				showInput: true,
+				label: "Email Address",
+				defaultValue: "test@email.com"
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const emailInputField = screen.getByDisplayValue(formConfig.email.defaultValue);
+		expect(emailInputField).toBeInTheDocument();
+		expect(emailInputField.value).toBe(formConfig.email.defaultValue);
+	});
+
+	it("Should show error message if format is not correct", async () => {
+		const formConfig = {
+			email: {
+				showInput: true,
+				label: "Email Address"
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const emailInputField = screen.getByRole("textbox", { name: formConfig.email.label });
+		await userEvent.type(emailInputField, "12 3");
+		const result = checkInputFormat({ email: emailInputField.value });
+		const errorMessage = await screen.findByText(result.message);
+		expect(errorMessage).toBeInTheDocument();
+	});
+});
