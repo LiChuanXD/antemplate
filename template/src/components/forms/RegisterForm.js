@@ -73,7 +73,14 @@ const RegisterForm = ({ formConfig }) => {
 				});
 
 			let nameElement = (
-				<Form.Item label={formConfig.name.label} name="name" htmlFor="name" rules={nameRules} className="form-group">
+				<Form.Item
+					label={formConfig.name.label}
+					name="name"
+					htmlFor="name"
+					rules={nameRules}
+					className="form-group"
+					data-testid="name-input"
+				>
 					<Input
 						type="text"
 						name="name"
@@ -100,7 +107,14 @@ const RegisterForm = ({ formConfig }) => {
 				});
 
 			let emailElement = (
-				<Form.Item label={formConfig.email.label} name="email" htmlFor="email" rules={emailRules} className="form-group">
+				<Form.Item
+					label={formConfig.email.label}
+					name="email"
+					htmlFor="email"
+					rules={emailRules}
+					className="form-group"
+					data-testid="email-input"
+				>
 					<Input
 						type="email"
 						id="email"
@@ -127,7 +141,14 @@ const RegisterForm = ({ formConfig }) => {
 				});
 
 			let numberElement = (
-				<Form.Item label={formConfig.number.label} name="number" htmlFor="number" rules={numberRules} className="form-group">
+				<Form.Item
+					label={formConfig.number.label}
+					name="number"
+					htmlFor="number"
+					rules={numberRules}
+					className="form-group"
+					data-testid="number-input"
+				>
 					<Input
 						type="text"
 						id="number"
