@@ -290,3 +290,24 @@ describe("Phone Number Input Field", () => {
 		expect(errorMessage).toBeInTheDocument();
 	});
 });
+
+describe("Submit Button", () => {
+	it("Should show correct button text if string is passed as props", async () => {
+		const formConfig = {
+			btnText: "Sign Up"
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const submitButton = screen.getByRole("button", { name: formConfig.btnText });
+		expect(submitButton).toBeInTheDocument();
+		expect(submitButton.innerHTML.match(/sign up/i)[0]).toBe(formConfig.btnText);
+	});
+
+	it('Should show "Submit" if no btnText was passed', async () => {
+		render(<MockComponent children={<RegisterForm formConfig={{}} />} />);
+		const submitButton = screen.getByRole("button", { name: /submit/i });
+		expect(submitButton).toBeInTheDocument();
+		expect(submitButton.innerHTML.match(/submit/i)[0]).toBe("Submit");
+	});
+
+	// should be disabled after submission
+});
