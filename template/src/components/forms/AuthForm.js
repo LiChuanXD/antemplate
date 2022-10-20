@@ -1,9 +1,9 @@
 import RegisterForm from "./RegisterForm";
 
-const AuthForm = ({ authType, propValues }) => {
+const AuthForm = ({ authType, formConfig }) => {
 	switch (authType) {
 		case "REGISTER":
-			return <RegisterForm propValues={propValues} />;
+			return <RegisterForm formConfig={formConfig} />;
 
 		case "LOGIN":
 			return;
