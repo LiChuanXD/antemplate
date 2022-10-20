@@ -195,3 +195,98 @@ describe("Email Address Input Field", () => {
 		expect(errorMessage).toBeInTheDocument();
 	});
 });
+
+describe("Phone Number Input Field", () => {
+	it("Should render input field if show input is true", async () => {
+		const formConfig = {
+			number: {
+				showInput: true
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const numberInputElement = screen.getByTestId("number-input");
+		expect(numberInputElement).toBeInTheDocument();
+	});
+
+	it("Should show the correct label if string is passed as props", async () => {
+		const formConfig = {
+			number: {
+				showInput: true,
+				label: "Phone Number"
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const labelText = screen.getByText(formConfig.number.label);
+		expect(labelText).toBeInTheDocument();
+		expect(labelText.innerHTML).toBe(formConfig.number.label);
+	});
+
+	it("Should be required if required is true", async () => {
+		const formConfig = {
+			number: {
+				showInput: true,
+				label: "Phone Number",
+				required: true
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const numberInputField = screen.getByRole("textbox", { name: formConfig.number.label });
+		expect(numberInputField).toBeRequired();
+	});
+
+	it("Should have correct placeholder if string is passed as props", async () => {
+		const formConfig = {
+			number: {
+				showInput: true,
+				label: "Phone Number",
+				placeholder: "Your Phone Number"
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const numberInputField = screen.getByPlaceholderText(formConfig.number.placeholder);
+		expect(numberInputField).toBeInTheDocument();
+		expect(numberInputField.placeholder).toBe(formConfig.number.placeholder);
+	});
+
+	it("Should be disabled if true is being passed as props", async () => {
+		const formConfig = {
+			number: {
+				showInput: true,
+				label: "Phone Number",
+				disabled: true
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const numberInputField = screen.getByRole("textbox", { name: formConfig.number.label });
+		expect(numberInputField).toBeDisabled();
+	});
+
+	it("Should have the correct default/initial value if its being passed as props", async () => {
+		const formConfig = {
+			number: {
+				showInput: true,
+				label: "Phone Number",
+				defaultValue: "0123456789"
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const numberInputField = screen.getByDisplayValue(formConfig.number.defaultValue);
+		expect(numberInputField).toBeInTheDocument();
+		expect(numberInputField.value).toBe(formConfig.number.defaultValue);
+	});
+
+	it("Should show error message if format is not correct", async () => {
+		const formConfig = {
+			number: {
+				showInput: true,
+				label: "Phone Number"
+			}
+		};
+		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+		const numberInputField = screen.getByRole("textbox", { name: formConfig.number.label });
+		await userEvent.type(numberInputField, "12 3");
+		const result = checkInputFormat({ number: numberInputField.value });
+		const errorMessage = await screen.findByText(result.message);
+		expect(errorMessage).toBeInTheDocument();
+	});
+});
