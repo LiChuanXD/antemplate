@@ -203,6 +203,7 @@ const RegisterForm = ({ formConfig }) => {
 			disabled={loading}
 			initialValues={initialValues}
 			aria-label="form"
+			data-testid="register-form"
 		>
 			{formContent}
 

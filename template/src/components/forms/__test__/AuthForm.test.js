@@ -4,10 +4,14 @@ import { render, screen } from "@testing-library/react";
 import AuthForm from "../AuthForm";
 import MockComponent from "../../tests/Mock";
 
-describe("Auth Form Props", () => {
-	it("should render register form if REGISTER value is passed as props authType", async () => {
-		render(<MockComponent children={<AuthForm authType="REGISTER" formConfig={{}} />} />);
-		const registerForm = screen.getByRole("form");
-		expect(registerForm).toBeInTheDocument();
-	});
+it("should render register form if authType = REGISTER", async () => {
+	render(<MockComponent children={<AuthForm authType="REGISTER" formConfig={{}} />} />);
+	const registerForm = screen.getByTestId("register-form");
+	expect(registerForm).toBeInTheDocument();
+});
+
+it("should render login form if authType = LOGIN", async () => {
+	render(<MockComponent children={<AuthForm authType="LOGIN" />} />);
+	const loginForm = screen.getByTestId("login-form");
+	expect(loginForm).toBeInTheDocument();
 });

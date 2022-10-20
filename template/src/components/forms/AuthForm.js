@@ -1,4 +1,5 @@
 import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
 
 const AuthForm = ({ authType, formConfig }) => {
 	switch (authType) {
@@ -6,7 +7,7 @@ const AuthForm = ({ authType, formConfig }) => {
 			return <RegisterForm formConfig={formConfig} />;
 
 		case "LOGIN":
-			return;
+			return <LoginForm formConfig={formConfig} />;
 
 		case "VERIFICATION":
 			return;

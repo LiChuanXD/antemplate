@@ -18,7 +18,7 @@ describe("Name Input Field", () => {
 		expect(nameInputElement).toBeInTheDocument();
 	});
 
-	it("Should show the correct label if string is passed as props", async () => {
+	it("Should show the correct label", async () => {
 		const formConfig = {
 			name: {
 				showInput: true,
@@ -44,7 +44,7 @@ describe("Name Input Field", () => {
 		expect(nameInputField).toBeRequired();
 	});
 
-	it("Should have correct placeholder if string is passed as props", async () => {
+	it("Should have correct placeholder", async () => {
 		const formConfig = {
 			name: {
 				showInput: true,
@@ -58,7 +58,7 @@ describe("Name Input Field", () => {
 		expect(nameInputField.placeholder).toBe(formConfig.name.placeholder);
 	});
 
-	it("Should be disabled if true is being passed as props", async () => {
+	it("Should be disabled if true", async () => {
 		const formConfig = {
 			name: {
 				showInput: true,
@@ -71,7 +71,7 @@ describe("Name Input Field", () => {
 		expect(nameInputField).toBeDisabled();
 	});
 
-	it("Should have the correct default/initial value if its being passed as props", async () => {
+	it("Should have the correct default/initial value", async () => {
 		const formConfig = {
 			name: {
 				showInput: true,
@@ -113,7 +113,7 @@ describe("Email Address Input Field", () => {
 		expect(emailInputElement).toBeInTheDocument();
 	});
 
-	it("Should show the correct label if string is passed as props", async () => {
+	it("Should show the correct label", async () => {
 		const formConfig = {
 			email: {
 				showInput: true,
@@ -139,7 +139,7 @@ describe("Email Address Input Field", () => {
 		expect(emailInputField).toBeRequired();
 	});
 
-	it("Should have correct placeholder if string is passed as props", async () => {
+	it("Should have correct placeholder", async () => {
 		const formConfig = {
 			email: {
 				showInput: true,
@@ -153,7 +153,7 @@ describe("Email Address Input Field", () => {
 		expect(emailInputField.placeholder).toBe(formConfig.email.placeholder);
 	});
 
-	it("Should be disabled if true is being passed as props", async () => {
+	it("Should be disabled if true", async () => {
 		const formConfig = {
 			email: {
 				showInput: true,
@@ -166,7 +166,7 @@ describe("Email Address Input Field", () => {
 		expect(emailInputField).toBeDisabled();
 	});
 
-	it("Should have the correct default/initial value if its being passed as props", async () => {
+	it("Should have the correct default/initial value", async () => {
 		const formConfig = {
 			email: {
 				showInput: true,
@@ -208,7 +208,7 @@ describe("Phone Number Input Field", () => {
 		expect(numberInputElement).toBeInTheDocument();
 	});
 
-	it("Should show the correct label if string is passed as props", async () => {
+	it("Should show the correct label", async () => {
 		const formConfig = {
 			number: {
 				showInput: true,
@@ -234,7 +234,7 @@ describe("Phone Number Input Field", () => {
 		expect(numberInputField).toBeRequired();
 	});
 
-	it("Should have correct placeholder if string is passed as props", async () => {
+	it("Should have correct placeholder", async () => {
 		const formConfig = {
 			number: {
 				showInput: true,
@@ -248,7 +248,7 @@ describe("Phone Number Input Field", () => {
 		expect(numberInputField.placeholder).toBe(formConfig.number.placeholder);
 	});
 
-	it("Should be disabled if true is being passed as props", async () => {
+	it("Should be disabled if true", async () => {
 		const formConfig = {
 			number: {
 				showInput: true,
@@ -261,7 +261,7 @@ describe("Phone Number Input Field", () => {
 		expect(numberInputField).toBeDisabled();
 	});
 
-	it("Should have the correct default/initial value if its being passed as props", async () => {
+	it("Should have the correct default/initial value", async () => {
 		const formConfig = {
 			number: {
 				showInput: true,
@@ -292,7 +292,7 @@ describe("Phone Number Input Field", () => {
 });
 
 describe("Submit Button", () => {
-	it("Should show correct button text if string is passed as props", async () => {
+	it("Should show correct button text", async () => {
 		const formConfig = {
 			btnText: "Sign Up"
 		};

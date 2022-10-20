@@ -5,7 +5,18 @@ import { showError } from "../../redux/slices/errorSlice";
 import checkInputFormat from "../../utils/misc/validation";
 import authApi from "../../services/user/auth";
 
-const LoginForm = () => {
+/*
+	formConfig
+	{
+		label: "str",
+		placeholder: "str",
+		btnText: "str",
+		formLayout: "vertical" | "horizontal" | "inline",
+		customClass: "str",
+		addElement: <></>
+	}
+*/
+const LoginForm = ({ formConfig }) => {
 	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(false);
 
@@ -36,15 +47,20 @@ const LoginForm = () => {
 		<Form
 			name="login-form"
 			id="login-form"
-			className="login-form form"
-			layout="vertical"
+			className={`login-form ${formConfig && formConfig.customClass}`}
+			layout={
+				formConfig && (formConfig.layout === "horizontal" || formConfig.layout === "vertical" || formConfig.layout === "inline")
+					? formConfig.layout
+					: "vertical"
+			}
 			onFinish={submitForm}
 			onFinishFailed={e => console.log("submit fail", e.errorFields)}
 			disabled={loading}
 			aria-label="form"
+			data-testid="login-form"
 		>
 			<Form.Item
-				label="Phone Number"
+				label={formConfig && formConfig.label ? formConfig.label : "Phone Number"}
 				name="number"
 				htmlFor="number"
 				rules={[
@@ -55,13 +71,23 @@ const LoginForm = () => {
 					}
 				]}
 				className="form-group"
+				data-testid="number-input"
 			>
-				<Input type="text" id="number" name="number" className="login-form-input form-input" required />
+				<Input
+					type="text"
+					id="number"
+					name="number"
+					className="form-input"
+					required
+					placeholder={formConfig && formConfig.placeholder ? formConfig.placeholder : null}
+				/>
 			</Form.Item>
+
+			{formConfig && formConfig.addElement}
 
 			<Form.Item className="form-group">
 				<Button htmlType="submit" block loading={loading} id="login-form-submit-btn" className="form-submit-btn">
-					Submit
+					{formConfig && formConfig.btnText ? formConfig.btnText : "Submit"}
 				</Button>
 			</Form.Item>
 		</Form>
