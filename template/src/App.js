@@ -14,6 +14,7 @@ const App = () => {
 		<div className="App">
 			<BrowserRouter>
 				<Routes>
+					<Route path="/" element={<h1>Your Landing Page</h1>} />
 					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>
 			</BrowserRouter>

@@ -11,7 +11,6 @@
   - [utils](#utils)
 - [Tests](#tests)
 - [Todo:](#todo)
-  - [Register Form](#register-form)
 
 # Folder Structures
 
@@ -64,21 +63,21 @@ In every component folder will have a \_\_test\_\_ folder to hold all the test f
 
 # Todo:
 
-## Register Form
-
-- [ ] To pass name input label as props
-- [ ] To show name input field as props
-- [ ] To pass name input placeholder as props
-- [ ] To pass name input is required as props
-- [ ] To pass email input label as props
-- [ ] To show email input field as props
-- [ ] To pass email input placeholder as props
-- [ ] To pass email input is required as props
-- [ ] To pass phone number input label as props
-- [ ] To show phone number input field as props
-- [ ] To pass phone number input placeholder as props
-- [ ] To pass phone number input is required as props
-- [ ] To pass submit button text as props
+- [ ] To pass name input label as props (register form)
+- [ ] To show name input field as props (register form)
+- [ ] To pass name input placeholder as props (register form)
+- [ ] To pass name input is required as props (register form)
+- [ ] To pass email input label as props (register form)
+- [ ] To show email input field as props (register form)
+- [ ] To pass email input placeholder as props (register form)
+- [ ] To pass email input is required as props (register form)
+- [ ] To pass phone number input label as props (register form)
+- [ ] To show phone number input field as props (register form)
+- [ ] To pass phone number input placeholder as props (register form)
+- [ ] To pass phone number input is required as props (register form)
+- [ ] To pass submit button text as props (register form)
+- [ ] To pass checkboxes as props (agree to terms and conditions / policy) (register form)
 - [ ] To update test conditions according to the list above
+- [ ] To change ant design form layout (vertical, horizontal, inline)
 - [ ] Login Form
 - [ ] Verification Form

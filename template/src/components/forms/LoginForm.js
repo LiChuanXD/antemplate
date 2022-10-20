@@ -5,7 +5,7 @@ import { showError } from "../../redux/slices/errorSlice";
 import checkInputFormat from "../../utils/misc/validation";
 import authApi from "../../services/user/auth";
 
-const RegisterForm = ({ propValues }) => {
+const LoginForm = () => {
 	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(false);
 
@@ -20,10 +20,9 @@ const RegisterForm = ({ propValues }) => {
 				...values
 			};
 			// add your additional send data below values
-
 			setLoading(true);
 			try {
-				const res = await authApi.register(sendData);
+				const res = await authApi.login(sendData);
 				setLoading(false);
 				// add your success handling here //
 			} catch (error) {
@@ -35,36 +34,15 @@ const RegisterForm = ({ propValues }) => {
 
 	return (
 		<Form
-			name="register-form"
-			id="register-form"
-			className="register-form form"
+			name="login-form"
+			id="login-form"
+			className="login-form form"
 			layout="vertical"
 			onFinish={submitForm}
 			onFinishFailed={e => console.log("submit fail", e.errorFields)}
 			disabled={loading}
-			initialValues={propValues}
 			aria-label="form"
 		>
-			<Form.Item
-				label="Name"
-				name="name"
-				htmlFor="name"
-				rules={[
-					{ validator },
-					{
-						required: true,
-						message: "Name is required"
-					}
-				]}
-				className="form-group"
-			>
-				<Input type="text" name="name" id="name" className="register-form-input form-input" required />
-			</Form.Item>
-
-			<Form.Item label="Email" name="email" htmlFor="email" rules={[{ validator }]} className="form-group">
-				<Input type="email" id="email" name="email" className="register-form-input form-input" />
-			</Form.Item>
-
 			<Form.Item
 				label="Phone Number"
 				name="number"
@@ -78,11 +56,11 @@ const RegisterForm = ({ propValues }) => {
 				]}
 				className="form-group"
 			>
-				<Input type="text" id="number" name="number" className="register-form-input form-input" required />
+				<Input type="text" id="number" name="number" className="login-form-input form-input" required />
 			</Form.Item>
 
 			<Form.Item className="form-group">
-				<Button htmlType="submit" block loading={loading} id="register-form-submit-btn" className="form-submit-btn">
+				<Button htmlType="submit" block loading={loading} id="login-form-submit-btn" className="form-submit-btn">
 					Submit
 				</Button>
 			</Form.Item>
@@ -90,4 +68,4 @@ const RegisterForm = ({ propValues }) => {
 	);
 };
 
-export default RegisterForm;
+export default LoginForm;
