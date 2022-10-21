@@ -2,7 +2,6 @@ import { useState, useCallback } from "react";
 import { Form, Input, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { showError } from "../../redux/slices/errorSlice";
-import checkInputFormat from "../../utils/misc/validation";
 import authApi from "../../services/user/auth";
 
 /*
@@ -14,17 +13,12 @@ import authApi from "../../services/user/auth";
 		layout: "vertical" | "horizontal" | "inline",
 		customClass: "str",
 		addElement: <></>,
-		addValues: {obj: "object"}
+        addValues: {obj: "object"}
 	}
 */
-const LoginForm = ({ formConfig }) => {
+const VerificationForm = ({ formConfig }) => {
 	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(false);
-
-	const validator = async (rule, value) => {
-		const { result, message } = checkInputFormat({ [rule.field]: value });
-		if (!result) return Promise.reject(new Error(message));
-	};
 
 	const submitForm = useCallback(async values => {
 		if (!loading) {
@@ -35,7 +29,7 @@ const LoginForm = ({ formConfig }) => {
 			};
 			setLoading(true);
 			try {
-				const res = await authApi.login(sendData);
+				const res = await authApi.verify(sendData);
 				setLoading(false);
 				// add your success handling here //
 			} catch (error) {
@@ -47,9 +41,9 @@ const LoginForm = ({ formConfig }) => {
 
 	return (
 		<Form
-			name="login-form"
-			id="login-form"
-			className={`login-form ${formConfig && formConfig.customClass}`}
+			name="verification-form"
+			id="verification-form"
+			className={`verification-form ${formConfig && formConfig.customClass}`}
 			layout={
 				formConfig && (formConfig.layout === "horizontal" || formConfig.layout === "vertical" || formConfig.layout === "inline")
 					? formConfig.layout
@@ -59,26 +53,19 @@ const LoginForm = ({ formConfig }) => {
 			onFinishFailed={e => console.log("submit fail", e.errorFields)}
 			disabled={loading}
 			aria-label="form"
-			data-testid="login-form"
+			data-testid="verification-form"
 		>
 			<Form.Item
-				label={formConfig && formConfig.label ? formConfig.label : "Phone Number"}
-				name="number"
-				htmlFor="number"
-				rules={[
-					{ validator },
-					{
-						required: true,
-						message: "Phone Number is required"
-					}
-				]}
+				label={formConfig && formConfig.label ? formConfig.label : ""}
+				name="otp"
+				htmlFor="otp"
 				className="form-group"
-				data-testid="number-input"
+				data-testid="otp-input"
 			>
 				<Input
-					type="text"
-					id="number"
-					name="number"
+					type="number"
+					id="otp"
+					name="otp"
 					className="form-input"
 					required
 					placeholder={formConfig && formConfig.placeholder ? formConfig.placeholder : null}
@@ -88,7 +75,7 @@ const LoginForm = ({ formConfig }) => {
 			{formConfig && formConfig.addElement}
 
 			<Form.Item className="form-group">
-				<Button htmlType="submit" block loading={loading} id="login-form-submit-btn" className="form-submit-btn">
+				<Button htmlType="submit" block loading={loading} id="verification-form-submit-btn" className="form-submit-btn">
 					{formConfig && formConfig.btnText ? formConfig.btnText : "Submit"}
 				</Button>
 			</Form.Item>
@@ -96,4 +83,4 @@ const LoginForm = ({ formConfig }) => {
 	);
 };
 
-export default LoginForm;
+export default VerificationForm;

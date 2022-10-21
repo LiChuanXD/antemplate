@@ -36,9 +36,10 @@ import authApi from "../../services/user/auth";
 			defaultValue: "str"
 		},
 		btnText: "str",
-		formLayout: "vertical" | "horizontal" | "inline",
+		layout: "vertical" | "horizontal" | "inline",
 		customClass: "str",
-		addElement: <></>
+		addElement: <></>,
+		addValues: {obj: "object"}
 	}
 */
 const RegisterForm = ({ formConfig }) => {
@@ -170,11 +171,11 @@ const RegisterForm = ({ formConfig }) => {
 	// form submit
 	const submitForm = useCallback(async values => {
 		if (!loading) {
+			const additionalValues = formConfig && formConfig.addValues ? formConfig.addValues : {};
 			const sendData = {
-				...values
+				...values,
+				...additionalValues
 			};
-			// add your additional send data below values
-
 			setLoading(true);
 			try {
 				const res = await authApi.register(sendData);

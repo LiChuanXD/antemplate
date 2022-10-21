@@ -26,3 +26,38 @@ it("Should show correct placeholder value", async () => {
 	expect(inputField).toBeInTheDocument();
 	expect(inputField.placeholder).toBe("Phone Number");
 });
+
+it("Should have default 'Submit' button text", async () => {
+	render(<MockComponent children={<LoginForm />} />);
+	const submitButton = screen.getByRole("button", { name: "Submit" });
+	expect(submitButton).toBeInTheDocument();
+	expect(submitButton.innerHTML).toMatch(/submit/i);
+});
+
+it("Should render correct submit button text", async () => {
+	render(<MockComponent children={<LoginForm formConfig={{ btnText: "LOGIN" }} />} />);
+	const submitButton = screen.getByRole("button", { name: "LOGIN" });
+	expect(submitButton).toBeInTheDocument();
+	expect(submitButton.innerHTML).toMatch(/login/i);
+});
+
+it("Input field should be required", async () => {
+	render(<MockComponent children={<LoginForm />} />);
+	const inputField = screen.getByRole("textbox", { name: "Phone Number" });
+	expect(inputField).toBeRequired();
+});
+
+it("Should show error message if format is wrong", async () => {
+	render(<MockComponent children={<LoginForm />} />);
+	const inputField = screen.getByRole("textbox", { name: "Phone Number" });
+	await userEvent.type(inputField, "abc123");
+	const result = checkInputFormat({ number: inputField.value });
+	const errorMessage = await screen.findByText(result.message);
+	expect(errorMessage).toBeInTheDocument();
+});
+
+it("Should show additional element in the form", async () => {
+	render(<MockComponent children={<LoginForm formConfig={{ addElement: <h1>Hello Guys</h1> }} />} />);
+	const additionalElement = screen.getByRole("heading", { name: "Hello Guys" });
+	expect(additionalElement).toBeInTheDocument();
+});

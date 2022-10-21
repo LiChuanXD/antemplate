@@ -299,15 +299,24 @@ describe("Submit Button", () => {
 		render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
 		const submitButton = screen.getByRole("button", { name: formConfig.btnText });
 		expect(submitButton).toBeInTheDocument();
-		expect(submitButton.innerHTML.match(/sign up/i)[0]).toBe(formConfig.btnText);
+		expect(submitButton.innerHTML).toMatch(/sign up/i);
 	});
 
 	it('Should show "Submit" if no btnText was passed', async () => {
 		render(<MockComponent children={<RegisterForm formConfig={{}} />} />);
 		const submitButton = screen.getByRole("button", { name: /submit/i });
 		expect(submitButton).toBeInTheDocument();
-		expect(submitButton.innerHTML.match(/submit/i)[0]).toBe("Submit");
+		expect(submitButton.innerHTML).toMatch(/submit/i);
 	});
 
 	// should be disabled after submission
+});
+
+it("Should show additional element in the form", async () => {
+	const formConfig = {
+		addElement: <h1>Hello Guys</h1>
+	};
+	render(<MockComponent children={<RegisterForm formConfig={formConfig} />} />);
+	const additionalElement = screen.getByRole("heading", { name: "Hello Guys" });
+	expect(additionalElement).toBeInTheDocument();
 });
