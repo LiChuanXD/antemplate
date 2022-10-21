@@ -63,8 +63,4 @@ In every component folder will have a \_\_test\_\_ folder to hold all the test f
 
 # Todo:
 
-- [x] ~~Register Form pass more data as props~~
-- [ ] To update register form test conditions according to the list above
 - [ ] Form submission click event test (loader, disabled ...)
-- [ ] Login Form
-- [ ] Verification Form
