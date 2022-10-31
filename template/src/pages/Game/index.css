@@ -1,0 +1,35 @@
+.game-modal {
+    position: absolute;
+    margin-top: -55%;
+    height: 29%;
+    width: 75%;
+    background-color: white;
+    border-radius: 25px;
+    border: #FFFFFF 1px solid;
+  }
+  
+  .relative-img {
+    /* position: absolute; */
+    margin-left: -18%;
+    margin-top: 1%;
+    width: 100vw;
+    height: 35vh;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+  }
+  
+  .relative-button {
+    width: 35%;
+  }
+  .prevent-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
