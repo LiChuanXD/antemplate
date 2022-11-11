@@ -1,9 +1,9 @@
-import { useState, useCallback, useMemo, Fragment } from "react";
-import { Form, Input, Button } from "antd";
-import { useDispatch } from "react-redux";
-import { showError } from "../../redux/slices/errorSlice";
-import checkInputFormat from "../../utils/misc/validation";
-import authApi from "../../services/user/auth";
+import { useState, useCallback, useMemo, Fragment } from 'react';
+import { Form, Input, Button } from 'antd';
+import { useDispatch } from 'react-redux';
+import { showError } from '../../redux/slices/errorSlice';
+import checkInputFormat from '../../utils/misc/validation';
+import authApi from '../../services/user/auth';
 
 /*
 	formConfig
@@ -70,23 +70,16 @@ const RegisterForm = ({ formConfig }) => {
 			if (formConfig.name.required)
 				nameRules.push({
 					required: true,
-					message: "Name is required"
+					message: 'Name is required',
 				});
 
 			let nameElement = (
-				<Form.Item
-					label={formConfig.name.label}
-					name="name"
-					htmlFor="name"
-					rules={nameRules}
-					className="form-group"
-					data-testid="name-input"
-				>
+				<Form.Item label={formConfig.name.label} name='name' htmlFor='name' rules={nameRules} className='form-group' data-testid='name-input'>
 					<Input
-						type="text"
-						name="name"
-						id="name"
-						className="form-input"
+						type='text'
+						name='name'
+						id='name'
+						className='form-input'
 						required={formConfig.name.required}
 						disabled={formConfig.name.disabled}
 						placeholder={formConfig.name.placeholder}
@@ -104,23 +97,16 @@ const RegisterForm = ({ formConfig }) => {
 			if (formConfig.email.required)
 				emailRules.push({
 					required: true,
-					message: "Email is required"
+					message: 'Email is required',
 				});
 
 			let emailElement = (
-				<Form.Item
-					label={formConfig.email.label}
-					name="email"
-					htmlFor="email"
-					rules={emailRules}
-					className="form-group"
-					data-testid="email-input"
-				>
+				<Form.Item label={formConfig.email.label} name='email' htmlFor='email' rules={emailRules} className='form-group' data-testid='email-input'>
 					<Input
-						type="email"
-						id="email"
-						name="email"
-						className="form-input"
+						type='email'
+						id='email'
+						name='email'
+						className='form-input'
 						required={formConfig.email.required}
 						disabled={formConfig.email.disabled}
 						placeholder={formConfig.email.placeholder}
@@ -138,23 +124,22 @@ const RegisterForm = ({ formConfig }) => {
 			if (formConfig.number.required)
 				numberRules.push({
 					required: true,
-					message: "Phone Number is required"
+					message: 'Phone Number is required',
 				});
 
 			let numberElement = (
 				<Form.Item
 					label={formConfig.number.label}
-					name="number"
-					htmlFor="number"
+					name='number'
+					htmlFor='number'
 					rules={numberRules}
-					className="form-group"
-					data-testid="number-input"
-				>
+					className='form-group'
+					data-testid='number-input'>
 					<Input
-						type="text"
-						id="number"
-						name="number"
-						className="form-input"
+						type='text'
+						id='number'
+						name='number'
+						className='form-input'
 						required={formConfig.number.required}
 						disabled={formConfig.number.disabled}
 						placeholder={formConfig.number.placeholder}
@@ -169,12 +154,12 @@ const RegisterForm = ({ formConfig }) => {
 	}, [formConfig]);
 
 	// form submit
-	const submitForm = useCallback(async values => {
+	const submitForm = useCallback(async (values) => {
 		if (!loading) {
 			const additionalValues = formConfig && formConfig.addValues ? formConfig.addValues : {};
 			const sendData = {
 				...values,
-				...additionalValues
+				...additionalValues,
 			};
 			setLoading(true);
 			try {
@@ -191,28 +176,25 @@ const RegisterForm = ({ formConfig }) => {
 	if (!formConfig) return null;
 	return (
 		<Form
-			name="register-form"
-			id="register-form"
+			name='register-form'
+			id='register-form'
 			className={`register-form ${formConfig.customClass}`}
 			layout={
-				formConfig.layout === "horizontal" || formConfig.layout === "vertical" || formConfig.layout === "inline"
-					? formConfig.layout
-					: "vertical"
+				formConfig.layout === 'horizontal' || formConfig.layout === 'vertical' || formConfig.layout === 'inline' ? formConfig.layout : 'vertical'
 			}
 			onFinish={submitForm}
-			onFinishFailed={e => console.log("submit fail", e.errorFields)}
+			onFinishFailed={(e) => console.log('submit fail', e.errorFields)}
 			disabled={loading}
 			initialValues={initialValues}
-			aria-label="form"
-			data-testid="register-form"
-		>
+			aria-label='form'
+			data-testid='register-form'>
 			{formContent}
 
 			{formConfig.addElement}
 
-			<Form.Item className="form-group">
-				<Button htmlType="submit" block loading={loading} id="register-form-submit-btn" className="form-submit-btn">
-					{formConfig.btnText || "Submit"}
+			<Form.Item className='form-group'>
+				<Button htmlType='submit' block loading={loading} id='register-form-submit-btn' className='form-submit-btn'>
+					{formConfig.btnText || 'Submit'}
 				</Button>
 			</Form.Item>
 		</Form>

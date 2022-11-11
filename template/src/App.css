@@ -28,3 +28,244 @@
 }
 
 /* YOUR CSS BELOW */
+
+
+
+/* Upload receipt CSS */
+.upload-receipt-content {
+	padding: 10px 0;
+
+}
+
+.upload-receipt-title {
+	margin-bottom: 0px;
+	font-weight: bold;
+	font-size: 1.7rem;
+	color: #242854;
+	text-align: center;
+}
+
+.upload-receipt-input-title {
+	margin-bottom: 0px;
+	text-align: left;
+	font-size: 1.2rem;
+}
+
+.upload-receipt-input-field {
+	text-align: left;
+	width: 100%;
+	border-radius: 5px;
+	height: 40px;
+	padding: 4px 20px;
+}
+
+.upload-receipt-input-item {
+	margin: 15px 10%;
+}
+
+.upload-receipt-input-file-box {
+	/* display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(235, 235, 235, 0.29);
+	height: 200px;
+	cursor: pointer; */
+}
+
+.upload-receipt-input-file-grid {
+	display: grid;
+	grid-template-columns: auto auto;
+	width: fit-content;
+}
+
+.upload-receipt-input-file-textone {
+	background-color: #C8C8C8;
+	border-radius: 5px;
+	padding: 0 20px;
+	margin-right: 8px;
+}
+
+.upload-receipt-form .ant-input-number-input {
+	padding: 0 !important;
+}
+
+.upload-receipt-submit-button {
+	/* width: 100%;
+	color: white;
+	font-size: 1.2rem;
+	height: 45px;
+	border-width: 0px;
+	border-radius: 15px; */
+}
+
+.upload-receipt-purchase {
+
+	padding: 10px 10% 20px;
+	font-size: 1.1rem;
+}
+
+.upload-receipt-purchase-grid {
+	display: grid;
+	grid-template-columns: 70% 30%;
+}
+
+.submit-receipt-content {
+	padding: 10px 6%;
+	font-family: 'Brandon Grotesque';
+	font-size: 1.2rem;
+}
+
+.submit-receipt-title {
+	margin-bottom: 0px;
+	font-weight: bold;
+	font-size: 1.7rem;
+	color: #242854;
+	text-align: center;
+}
+
+.submit-receipt-input-title {
+	margin: 40px 0px 20px 10px;
+}
+
+.submit-receipt-preview-box {
+	border: 1px solid rgba(48, 101, 171, 0.5);
+	border-radius: 5.7px;
+	padding: 15px 40px;
+}
+
+.submit-receipt-reupload {
+	background-color: #6C6C6C;
+	border-radius: 5.7px;
+	padding: 3px 20px;
+	text-align: center;
+	width: 80%;
+	margin: 15px auto 0px;
+	color: white;
+	cursor: pointer;
+}
+
+.submit-receipt-make-sure {
+	margin: 25px 6% 15px;
+}
+
+.submit-receipt-make-sure-grid {
+	display: grid;
+	grid-template-columns: 10% 90%;
+	margin-top: 10px;
+	line-height: 23px;
+}
+
+.submit-receipt-submit-button-single {
+	border-radius: 15px;
+	margin: 40px 4% 0;
+	color: white;
+	width: calc(100% - 8%);
+	height: 45px;
+	font-size: 1.2rem;
+}
+
+
+.submit-receipt-submit-button {
+	border-radius: 15px;
+	margin: 40px 4% 0;
+	color: white;
+	width: calc(100% - 8%);
+	height: 45px;
+	font-size: 1.2rem;
+}
+
+.submit-receipt-upload-history-button {
+	background-color: white;
+	border: 1.5px solid #279AD4;
+	border-radius: 15px;
+	margin: 15px 4% 0;
+	width: calc(100% - 8%);
+	height: 45px;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.submit-receipt-modal-title {
+	margin-bottom: 0px;
+	font-weight: bold;
+	font-size: 1.8rem;
+	text-align: center;
+}
+
+.submit-receipt-modal {
+	position: relative;
+	width: 82% !important;
+	max-width: 480px;
+}
+
+.submit-receipt-modal .ant-modal-content {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+	border-radius: 20px !important;
+	padding: 15px 25px;
+}
+
+.submit-receipt-modal-tick {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80px;
+}
+
+.submit-receipt-modal-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: translate(25%, -25%);
+	width: 35px;
+	cursor: pointer;
+}
+
+.submit-receipt-modal-text {
+	text-align: center;
+	font-family: 'Open Sans';
+	font-size: 1rem;
+}
+
+.uploaded-image-container{
+	width: 100%;
+	object-fit: contain;
+	max-height: 400px;
+}
+
+
+.btn-minus,
+.btn-plus,
+.number-box {
+  color: black;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: right;
+}
+
+.btn-minus,
+.btn-plus {
+  border-radius: 50%;
+  background-color: #279AD4;
+  color: white;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding-bottom: 3px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/**** End Info****/
+/* YOUR CSS BELOW */
+
+
